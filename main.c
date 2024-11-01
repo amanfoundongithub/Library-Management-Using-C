@@ -36,7 +36,6 @@ int main(void){
     issueBook(arr[3], names[3], books[1]);
     issueBook(arr[5], names[4], books[0]);
     issueBook(arr[5], names[5], books[0]);
-    issueBook(arr[5], names[4], books[0]);
 
     returnBook(arr[6], names[6], books[3]);
     returnBook(arr[3], names[3], books[3]);
