@@ -6,12 +6,8 @@
 
 typedef struct book* Book;
 
-Book createNewBook(int bookId, char* title, int noOfPages, int library);
+Book createNewBook(int bookId, char* title, char* author, int noOfPages, int library);
 
-bool getIsTaken(Book book);
-
-void setIsTaken(Book book, bool isTaken);
-
-int getBookID(Book book);
+void printBook(Book book);
 
 #endif

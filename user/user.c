@@ -18,6 +18,8 @@ User createUser(char* email, char* password, char* username) {
     newUser->numberofBooks = 0;
     newUser->maxBooks = ADD_NEW_BLOCKS;
 
+    newUser->booksTitles = malloc(sizeof(char *) * ADD_NEW_BLOCKS);
+
     return newUser;
 }
 
@@ -32,8 +34,4 @@ char* getUsername(User user) {
 bool checkPassword(User user, char* password) {
     return strcmp(user->password, password);
 }
-
-
-
-
 

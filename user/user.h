@@ -17,4 +17,8 @@ void printUser(User user);
 
 bool issueBook(User user, char* password, Book book);
 
+bool returnBook(User user, char* password, Book book);
+
+
+
 #endif

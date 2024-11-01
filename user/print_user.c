@@ -21,8 +21,6 @@ void printUser(User user) {
 
     printf("\t" CYAN "Books issued:\n" RESET);
     for(int i = 0 ; i < user->numberofBooks ; i++){
-        printf("\t\tBOOK ID : %d\n", user->booksIssued[i]);
+        printf("\t\tBook Title: %s\tBook ID: %d\n", user->booksTitles[i], user->booksIssued[i]);
     }
-
-
 }

@@ -16,6 +16,7 @@ struct user {
     char* email;
 
     int* booksIssued;
+    char** booksTitles;
     int numberofBooks;
     int maxBooks;
 };

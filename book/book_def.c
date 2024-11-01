@@ -7,16 +7,21 @@
 #include <stdbool.h>
 
 
+#define ADD_NEW_ISSUERS 5 
+
 struct book {
     int bookId;
 
     char* title;
+    char* author;
     int noOfPages;
 
     bool isTaken;
     int library;
 
-    int* issuedBy;
+    char** issuedBy;
+    int maxSize;
+    int filled;
 };
 
 #endif 

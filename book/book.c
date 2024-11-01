@@ -3,7 +3,7 @@
 #include "book_def.c"
 #include "../utils/utils.h"
 
-Book createNewBook(int bookId, char* title, int noOfPages, int library) {
+Book createNewBook(int bookId, char* title, char* author, int noOfPages, int library) {
 
     Book newBook = (Book) malloc(sizeof(struct book));
 
@@ -13,20 +13,12 @@ Book createNewBook(int bookId, char* title, int noOfPages, int library) {
 
     newBook->noOfPages = noOfPages;
     newBook->title = dupstr(title);
+    newBook->author = dupstr(author);
 
-    newBook->issuedBy = NULL;
+    newBook->issuedBy = malloc(sizeof(char *) * ADD_NEW_ISSUERS);
+    newBook->maxSize = ADD_NEW_ISSUERS;
+    newBook->filled = 0;
 
     return newBook;
 }
 
-bool getIsTaken(Book book) {
-    return book->isTaken;
-}
-
-int getBookID(Book book) {
-    return book->bookId;
-}
-
-void setIsTaken(Book book, bool isTaken) {
-    book->isTaken = isTaken;
-}
