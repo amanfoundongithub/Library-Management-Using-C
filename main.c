@@ -24,6 +24,7 @@ int main(void){
         arr[i] = createUser(names[i], names[i], names[i]);
     }
 
+    
     Book books[5];
 
     books[0] = createNewBook(109, "Atlas Shrugged", "Ayn Rand", 520, 10);
@@ -42,13 +43,15 @@ int main(void){
 
     issueBook(arr[6], names[6], books[3]);
 
-    for(int i = 0 ; i < 10 ; i++) {
-        printUser(arr[i]);
-    }
+    User finduser = retrievefromDB("harsh");
+
+    printUser(finduser);
 
     for(int i = 0 ; i < 5 ; i++){
         printBook(books[i]);
     }
+
+
 
 
     return 0;

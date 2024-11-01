@@ -9,7 +9,8 @@ void strcpy(char* src, char* tgt);
 
 char* dupstr(char* src);
 
-
 bool strcmp(char* src, char* tgt);
+
+char* strcat(char* src, char* tgt);
 
 #endif 
