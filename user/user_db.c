@@ -6,9 +6,8 @@
 #include <stdlib.h>
 
 
-bool saveToDB(User user) {
+bool saveUserToDB(User user) {
     // Open the file
-
     
     FILE* f = fopen(strcat(strcat("./db/user/", user->username), ".txt"), "w");
 
@@ -27,7 +26,7 @@ bool saveToDB(User user) {
     return true;
 }
 
-User retrievefromDB(char* username) {
+User retrieveUserfromDB(char* username) {
 
     // Open the file
     FILE* f = fopen(strcat(strcat("./db/user/", username), ".txt"), "r");
@@ -59,14 +58,21 @@ User retrievefromDB(char* username) {
     user->password = newstr3;
 
     // Get number details 
-    fscanf(f, "%d\n%d\n", &user->maxBooks, &user->numberofBooks);
+    fscanf(f, "%d\n%d\n", &(user->maxBooks), &(user->numberofBooks));
 
     user->booksIssued = (int *) malloc(sizeof(int) * user->maxBooks);
-
+    user->booksTitles = (char *) malloc(sizeof(char *) * user->maxBooks)
+    ;
     // Get book details
     for(int i = 0 ; i < user->numberofBooks;  i++){
         char* bookTitle = (char *) malloc(sizeof(char) * 40);
-        fscanf(f, "%d\n%s\n",&user->booksIssued[i], bookTitle);
+        fscanf(f, "%d\n",&(user->booksIssued[i]));
+        if(fgets(bookTitle, sizeof(bookTitle) , f)) {
+            int len = strlen(bookTitle);
+            if(len > 0 && bookTitle[len -  1] == '\n'){
+                bookTitle[len - 1] = '\0';
+            }
+        }
         user->booksTitles[i] = dupstr(bookTitle);
         free(bookTitle);
     }

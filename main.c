@@ -43,16 +43,17 @@ int main(void){
 
     issueBook(arr[6], names[6], books[3]);
 
-    User finduser = retrievefromDB("harsh");
+    for(int i = 0 ; i < 10 ; i++) {
+        saveUserToDB(arr[i]);
+    }
+
+    User finduser = retrieveUserfromDB("jadeja");
 
     printUser(finduser);
 
     for(int i = 0 ; i < 5 ; i++){
         printBook(books[i]);
     }
-
-
-
 
     return 0;
 }

@@ -19,8 +19,8 @@ bool issueBook(User user, char* password, Book book);
 
 bool returnBook(User user, char* password, Book book);
 
-bool saveToDB(User user);
-User retrievefromDB(char* username);
+bool saveUserToDB(User user);
+User retrieveUserfromDB(char* username);
 
 
 #endif
