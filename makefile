@@ -9,7 +9,7 @@ UTILS_DIR = ./utils
 
 # Source and object files
 SRC_FILES = main.c \
-            $(BOOK_DIR)/book.c $(BOOK_DIR)/book_def.c $(BOOK_DIR)/print_book.c \
+            $(BOOK_DIR)/book.c $(BOOK_DIR)/book_def.c $(BOOK_DIR)/print_book.c ${BOOK_DIR}/book_db.c\
             $(USER_DIR)/print_user.c $(USER_DIR)/user.c $(USER_DIR)/user_db.c $(USER_DIR)/userdef.c $(USER_DIR)/user_operations.c \
             $(UTILS_DIR)/utils.c
 

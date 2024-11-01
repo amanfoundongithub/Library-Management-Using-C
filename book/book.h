@@ -10,4 +10,6 @@ Book createNewBook(int bookId, char* title, char* author, int noOfPages, int lib
 
 void printBook(Book book);
 
+bool saveBookToDB(Book book);
+
 #endif

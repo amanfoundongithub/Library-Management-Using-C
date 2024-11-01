@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "user/user.h"
 #include "book/book.h"
-
+#include "utils/utils.h"
 
 int main(void){
+
+    printf("%s\n", numTostr(20));
 
     User arr[10];
 
@@ -53,6 +55,7 @@ int main(void){
 
     for(int i = 0 ; i < 5 ; i++){
         printBook(books[i]);
+        saveBookToDB(books[i]);
     }
 
     return 0;

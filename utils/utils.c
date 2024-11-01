@@ -67,3 +67,32 @@ char* strcat(char* str1, char* str2) {
     return final;
 }   
 
+
+char* numTostr(int num) {
+
+    if(num == 0){
+        return "0";
+    }
+
+    char* numStr = (char *) malloc(sizeof(char) * 40);
+    int digits[40];
+    int count = 0;
+
+    while(num > 0) {
+        digits[count] = num%10;
+        count++;
+        num = num/10;
+    }
+
+    int i = 0;
+    for(; i < count ; i++) {
+        numStr[i] = digits[count - 1 - i] + '0';
+    }
+    numStr[i] = '\0';
+
+    char* trimmed = dupstr(numStr);
+    free(numStr);
+    return trimmed; 
+
+}
+
