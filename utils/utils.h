@@ -15,4 +15,6 @@ char* dupstr(char* src);
 
 char * numTostr(int num);
 
+bool removeDirectory(const char *path);
+
 #endif 

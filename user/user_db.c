@@ -6,10 +6,25 @@
 #include <stdlib.h>
 
 
-bool saveUserToDB(User user) {
+char* filePath(const char* username) {
+    return strcat("./db/user/", username);
+}
+
+FILE* openUserFile(const char* username, const char* mode) {
+
+    char* path = filePath(username);
+    char* path2 = strcat(path, ".txt");
+    free(path);
+    FILE* fp = fopen(path2, mode);
+    free(path2);
+    return fp; 
+}
+
+
+bool saveUserToDB(const User user) {
+
     // Open the file
-    
-    FILE* f = fopen(strcat(strcat("./db/user/", user->username), ".txt"), "w");
+    FILE* f = openUserFile(user->username, "w");
 
     // Save details first 
     fprintf(f, "%s\n%s\n%s\n", user->username, user->password, user->email);
@@ -26,16 +41,15 @@ bool saveUserToDB(User user) {
     return true;
 }
 
-User retrieveUserfromDB(char* username) {
+User retrieveUserfromDB(const char* username) {
 
     // Open the file
-    FILE* f = fopen(strcat(strcat("./db/user/", username), ".txt"), "r");
+    FILE* f = openUserFile(username, "r");
 
     if(f == NULL){
         printf("Cannot read details of %s\n", username);
         return NULL;
     }
-
 
     User user = (User) malloc(sizeof(struct user));
 
@@ -67,7 +81,7 @@ User retrieveUserfromDB(char* username) {
     for(int i = 0 ; i < user->numberofBooks;  i++){
         char* bookTitle = (char *) malloc(sizeof(char) * 40);
         fscanf(f, "%d\n",&(user->booksIssued[i]));
-        if(fgets(bookTitle, sizeof(bookTitle) , f)) {
+        if(fgets(bookTitle, 40 , f)) {
             int len = strlen(bookTitle);
             if(len > 0 && bookTitle[len -  1] == '\n'){
                 bookTitle[len - 1] = '\0';
@@ -81,3 +95,32 @@ User retrieveUserfromDB(char* username) {
     return user;
 
 }
+
+bool deleteUserFromDB(const User user) {
+
+    // Open file
+    char* file = filePath(user->username);
+
+    // Get username
+    char* username = dupstr(user->username);
+
+    // remove file 
+    if(remove(file) == 0) {
+        printf("User %s has been deleted from DB!\n", username);
+        free(file);
+        free(username);
+        return true;
+    }
+    else {
+        printf("Error in deleting User %s\n", username);
+        free(file);
+        free(username);
+        return false;
+    }
+}
+
+bool updateUserInDB(const User user) { 
+    return saveUserToDB(user);
+}
+
+

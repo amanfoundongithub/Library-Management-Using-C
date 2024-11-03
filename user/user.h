@@ -19,8 +19,19 @@ bool issueBook(User user, char* password, Book book);
 
 bool returnBook(User user, char* password, Book book);
 
-bool saveUserToDB(User user);
-User retrieveUserfromDB(char* username);
+
+/**********************************************************
+ * Database operations (CRUD) 
+ **********************************************************/
+// Create User
+bool saveUserToDB(const User user);
+// Read User
+User retrieveUserfromDB(const char* username);
+// Updates User 
+bool updateUserInDB(const User user);
+// Deletes User 
+bool deleteUserFromDB(const User user);
+
 
 
 #endif
